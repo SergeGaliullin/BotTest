@@ -1,4 +1,5 @@
 use actix_web::{web, App, HttpRequest, HttpServer, Responder};
+use std::env;
 
 fn greet(req: HttpRequest) -> impl Responder {
     let name = req.match_info().get("name").unwrap_or("World");
@@ -6,13 +7,18 @@ fn greet(req: HttpRequest) -> impl Responder {
 }
 
 fn main() {
+    let port = env::var("PORT")
+        .unwrap_or_else(|_| "3000".to_string())
+        .parse()
+        .expect("PORT must be a number");
+
     HttpServer::new(|| {
         App::new()
             .route("/", web::get().to(greet))
             .route("/{name}", web::get().to(greet))
     })
-        .bind("127.0.0.1:8000")
-        .expect("Can not bind to port 8000")
+        .bind(("0.0.0.0", port))
+        .expect("Can not bind")
         .run()
         .unwrap();
 }
