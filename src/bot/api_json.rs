@@ -18,6 +18,7 @@ pub struct Chat {
     pub id: String
 }
 
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Message {
     pub text: String
 }
