@@ -1,7 +1,8 @@
 use super::api_json::{ResponseMessage, RequestMessage};
 use actix_web::{web, HttpResponse};
 
-pub fn new_message(message: web::Json<RequestMessage>) -> HttpResponse {   
+pub fn new_message(message: web::Json<RequestMessage>) -> HttpResponse {
+    println!("Message: {}", message.text);
     HttpResponse::Ok().json(
         ResponseMessage {
             text: message.text.clone(),
