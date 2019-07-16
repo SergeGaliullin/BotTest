@@ -6,7 +6,7 @@ pub fn new_message(message: web::Json<RequestMessage>) -> HttpResponse {
     println!("Chat id: {}", message.chat.id);
     HttpResponse::Ok().json(
         ResponseMessage {
-            text: message.text.clone(),
+            text: message.message.text.clone(),
             chat_id: message.chat.id.clone()
         }
     )

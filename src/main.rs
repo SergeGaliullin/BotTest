@@ -18,11 +18,14 @@ fn main() {
 }
 
 fn get_port() -> u16 {
+    let key = "857986614:AAGxbElOOyvqDhdl9f8Re78PcRPru8JX1HU";
     return env::var("PORT")
         .unwrap_or_else(|_| String::from("3000"))
         .parse()
         .expect("PORT must be a number");
 }
+
+//https://api.telegram.org/bot857986614:AAGxbElOOyvqDhdl9f8Re78PcRPru8JX1HU/deleteWebhook
 
 
 

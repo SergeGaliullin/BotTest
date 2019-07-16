@@ -6,13 +6,18 @@ pub struct ResponseMessage {
     pub chat_id: String,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ResponseMessageChat {
-    pub id: String
-}
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct RequestMessage {
-    pub text: String,
-    pub chat: ResponseMessageChat,
+    pub message: Message,
+    pub chat: Chat,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct Chat {
+    pub id: String
+}
+
+pub struct Message {
+    pub text: String
 }
